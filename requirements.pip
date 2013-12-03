@@ -1,0 +1,4 @@
+# Newer pip is required in order to parse the requirements file within
+# setup.py
+pip>=1.4.0
+
