@@ -20,6 +20,7 @@ Process monitoring plugins for pycollectd.
 from __future__ import absolute_import
 
 # Other Library Imports
+from collectd import Values
 from procfs import Proc
 from procfs.exceptions import DoesNotExist, UnknownProcess
 
@@ -65,12 +66,12 @@ class ProcessMemoryPlugin(CollectDPlugin):
         # Dispatch metrics for each worker.
         for idx, status in enumerate(statuses):
             try:
-                vmsize = collectd.Values(
+                vmsize = Values(
                     plugin_instance='vmsize',
                     values=(status['VmSize'],),
                 )
 
-                vmrss = collectd.Values(
+                vmrss = Values(
                     plugin_instance='vmrss',
                     values=(status['VmRSS'],),
                 )
