@@ -14,7 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from pip.req import parse_requirements
 from setuptools import setup, find_packages
 
 import os
@@ -29,22 +28,6 @@ REPO_URL = 'https://github.com/lyft/pycollectd'
 # Github will generate a tarball as long as you tag your releases, so don't
 # forget to tag!
 DOWNLOAD_URL = ''.join((REPO_URL, '/tarball/release/', VERSION))
-
-# Paths
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-REQUIREMENTS = os.path.join(BASE_DIR, 'requirements.pip')
-
-# We want to install all the dependencies of the library as well, but we
-# don't want to duplicate the dependencies both here and in
-# requirements.pip. Instead we parse requirements.pip to pull in our
-# dependencies.
-#
-# A requirement file can contain comments (#) and can include some other
-# files (--requirement or -r), so we need to use pip's parser to get the
-# final list of dependencies.
-DEPENDENCIES = [unicode(package.req)
-                for package in parse_requirements(REQUIREMENTS)]
-
 
 setup(
     name='pycollectd',
@@ -62,7 +45,6 @@ setup(
     download_url=DOWNLOAD_URL,
     license='Apache Software License',
     packages=find_packages(),
-    install_requires=DEPENDENCIES,
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Plugins',
