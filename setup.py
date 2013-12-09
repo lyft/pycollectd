@@ -45,7 +45,10 @@ setup(
     download_url=DOWNLOAD_URL,
     license='Apache Software License',
     packages=find_packages(),
-    install_requires=['pygerduty'],
+    install_requires=[
+        'procfs',
+        'pygerduty',
+    ],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Environment :: Plugins',
